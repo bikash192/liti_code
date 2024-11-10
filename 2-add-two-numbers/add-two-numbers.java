@@ -29,10 +29,10 @@ class Solution {
             cary=sum/10;
             temp.next=ll;
             temp=temp.next;
+        }
         if(cary>0){
             ListNode ln=new ListNode(cary);
             temp.next=ln;
-        }
         }
         return newNode.next;
     }
