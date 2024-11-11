@@ -10,29 +10,25 @@
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        ListNode ln = new ListNode(0);
-        ListNode prev = ln;
-        ln.next = head;
-        ListNode temp = head;
-        
-        while (temp != null) {
-            boolean flag = false;
-            
-            // Check for consecutive duplicates
-            while (temp.next != null && temp.next.val == temp.val) {
-                temp = temp.next; // Skip over the duplicate node
-                flag = true; // Mark that duplicates were found
+        ListNode temp=head;
+        ListNode ln=new ListNode(0);
+        ln.next=head;
+        ListNode prev=ln;
+        while(temp!=null){
+            boolean flag=false;
+            while(temp.next!=null&&temp.next.val==temp.val){
+                temp=temp.next;
+                flag=true;
             }
-            
-            if (flag) {
-                prev.next = temp.next; // Skip the entire duplicate sequence
-            } else {
-                prev = prev.next; // Move prev to the current unique node
+            if(flag){
+                prev.next=temp.next;
             }
-            
-            temp = temp.next; // Move temp to the next node
+            else{
+                prev=prev.next;
+            }
+            temp=temp.next;
         }
-        
-        return ln.next; // Return the modified list (skip the dummy node)
+     
+        return ln.next;
     }
 }
