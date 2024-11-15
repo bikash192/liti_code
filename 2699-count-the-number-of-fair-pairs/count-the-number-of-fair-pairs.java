@@ -4,7 +4,6 @@ class Solution {
             while(l<=h){
                 int m=(l+h)/2;
                 if(nums[m]>=x){
-                    // ans=nums[m];
                     h=m-1;
                 }
                 else{
