@@ -8,11 +8,8 @@ class Solution {
                 prev=cur;
                 c++;
             }
-            if(c==balls){
-                break;
-            }
         }
-        return c==balls;
+        return c>=balls;
     }
     public int maxDistance(int[] position, int m) {
         int n=position.length;
