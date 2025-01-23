@@ -1,20 +1,28 @@
 class Solution {
     public int trap(int[] a) {
-        int pfx[]=new int [a.length];
-        int sfx[]=new int [a.length];
-        int n=a.length;
-         pfx[0]=a[0];
-        for(int i=1;i<a.length;i++){
-            pfx[i]=Math.max(pfx[i-1],a[i]);
+        int lmax=0,rmax=0,sum=0;
+        int i=0,j=a.length-1;
+        while(i<=j){
+            if(a[i]<=a[j]){
+                if(a[i]>=lmax){
+                    lmax=a[i];
+                }
+                else{
+                    sum+=lmax-a[i];
+                }
+                i++;
+            }
+            else{
+                if(a[j]>=rmax){
+                    rmax=a[j];
+                }
+                else{
+                    sum+=rmax-a[j];
+                }
+                j--;
+            }
         }
-        sfx[n-1]=a[n-1];
-        for(int i=n-2;i>=0;i--){
-            sfx[i]=Math.max(sfx[i+1],a[i]);
-        }
-        int sum=0;
-        for(int i=0;i<a.length;i++){
-            sum=sum+Math.min(pfx[i],sfx[i])-a[i];
-        }
+            
         return sum;
     }
 }
