@@ -1,9 +1,9 @@
 class Solution {
-    public int lower(int[] a,int t){
-        int l=0,h=a.length-1, ans=a.length;
+    public int lower(int []arr,int t){
+        int l=0,h=arr.length-1,ans=arr.length;
         while(l<=h){
             int m=l+(h-l)/2;
-            if(a[m]>=t){
+            if(arr[m]>=t){
                 ans=m;
                 h=m-1;
             }
@@ -13,11 +13,11 @@ class Solution {
         }
         return ans;
     }
-    public int upper(int []a,int t){
-        int l=0,h=a.length-1, ans=a.length;
+    public int upper(int[]arr,int t){
+        int l=0,h=arr.length-1,ans=arr.length;
         while(l<=h){
             int m=l+(h-l)/2;
-            if(a[m]>t){
+            if(arr[m]>t){
                 ans=m;
                 h=m-1;
             }
@@ -28,14 +28,11 @@ class Solution {
         return ans;
     }
     public int[] searchRange(int[] nums, int target) {
-        int i=lower(nums,target);
-        int j=upper(nums,target);
-        int n=nums.length;
-        if(i==n||nums[i]!=target){
-            return new int[]{-1,-1};
+        int low=lower(nums,target);
+        int high=upper(nums,target);
+         if (low >= nums.length || nums[low] != target) {
+            return new int[]{-1, -1};
         }
-            return new int[]{i,j-1};
-        
-        
+        return new int[]{low,high-1};
     }
 }
