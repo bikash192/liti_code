@@ -1,25 +1,25 @@
 class Solution {
     public int search(int[] nums, int target) {
-        int l=0,h=nums.length-1;
-        while(l<=h){
-            int m=l+(h-l)/2;
-            if(nums[m]==target){
-                return m;
+        int low=0,high=nums.length-1;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            if(nums[mid]==target){
+                return mid;
             }
-            else if(nums[l]<=nums[m]){
-                if(target>=nums[l]&&target<=nums[m]){
-                    h=m-1;
+            else if(nums[low]<=nums[mid]){
+                if(target>=nums[low]&&target<=nums[mid]){
+                    high=mid-1;
                 }
                 else{
-                    l=m+1;
+                    low=mid+1;
                 }
             }
             else{
-                if(target>=nums[m]&&target<=nums[h]){
-                    l=m+1;
+                if(target>=nums[mid]&&target<=nums[high]){
+                    low=mid+1;
                 }
                 else{
-                    h=m-1;
+                    high=mid-1;
                 }
             }
         }
