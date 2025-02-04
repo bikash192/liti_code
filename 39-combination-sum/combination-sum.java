@@ -1,5 +1,5 @@
 class Solution {
-    public void c_sum(int []a,int id,List<Integer> cur,int t,List<List<Integer>> ans){
+    public void c_sum(int[]a,int id,int t,List<Integer>cur,List<List<Integer>> ans){
         int n=a.length;
         if(id==n){
             if(t==0){
@@ -9,15 +9,15 @@ class Solution {
         }
         if(a[id]<=t){
             cur.add(a[id]);
-            c_sum(a,id,cur,t-a[id],ans);
+            c_sum(a,id,t-a[id],cur,ans);
             cur.remove(cur.size()-1);
         }
-        c_sum(a,id+1,cur,t,ans);
+        c_sum(a,id+1,t,cur,ans);
     }
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> ans=new ArrayList<>();
-        List<Integer> v=new ArrayList<>();
-        c_sum(candidates,0,v,target,ans);
+        List<Integer> cur=new ArrayList<>();
+        c_sum(candidates,0,target,cur,ans);
         return ans;
     }
 }
