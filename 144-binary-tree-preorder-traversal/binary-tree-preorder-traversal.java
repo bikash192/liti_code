@@ -22,12 +22,8 @@ class Solution {
        ans.add(root.val);
         temp1=preorderTraversal(root.left);
         temp2=preorderTraversal(root.right);
-        for(int i=0;i<temp1.size();i++){
-            ans.add(temp1.get(i));
-        }
-        for(int i=0;i<temp2.size();i++){
-            ans.add(temp2.get(i));
-        } 
+        ans.addAll(temp1);
+        ans.addAll(temp2); 
         return ans;
     }
 }
