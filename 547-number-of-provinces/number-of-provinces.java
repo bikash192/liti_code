@@ -1,12 +1,27 @@
 class Solution {
-    public void dfs(List<List<Integer>> adj,int []vis,int node){
+    public void bfs(List<List<Integer>> adj,int []vis,int node){
+        Queue <Integer> q=new LinkedList<>();
+        int n=adj.size();
+        q.add(node);
         vis[node]=1;
-        for (int neighbor : adj.get(node)) {
-            if (vis[neighbor] == 0) {
-                dfs(adj, vis, neighbor);
+        while(!q.isEmpty()){
+            int p=q.poll();
+            for(int it:adj.get(p)){
+                if(vis[it]==0){
+                    vis[it]=1;
+                    q.add(it);
+                }
             }
         }
     }
+    // public void dfs(List<List<Integer>> adj,int []vis,int node){
+    //     vis[node]=1;
+    //     for (int neighbor : adj.get(node)) {
+    //         if (vis[neighbor] == 0) {
+    //             dfs(adj, vis, neighbor);
+    //         }
+    //     }
+    // }
     public int findCircleNum(int[][] isConnected) {
         int n=isConnected.length;
         List<List<Integer>> adj=new ArrayList<>();
@@ -24,7 +39,7 @@ class Solution {
         int cnt=0;
         for(int i=0;i<n;i++){
             if(vis[i]==0){
-                dfs(adj,vis,i);
+                bfs(adj,vis,i);
                 cnt++;
             }
         }
