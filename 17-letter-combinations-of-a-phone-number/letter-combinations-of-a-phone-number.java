@@ -1,19 +1,20 @@
 class Solution {
-    public void helper(int idx,String digits,Map<Character,String>mp,String temp,List<String>ans ){
-        if(digits.length()==idx){
+    public void c_phone(String digits,int idx,String temp,Map<Character,String> mp,List<String> ans){
+        if(digits.length()==0) return;
+        if(idx==digits.length()){
             ans.add(temp);
-            return ;
+            return;
         }
         char ch=digits.charAt(idx);
-        String letters=mp.get(ch);
-        for(char letter:letters.toCharArray()){
-            helper(idx + 1, digits, mp, temp + letter, ans);
+        String s=mp.get(ch);
+        for(char c:s.toCharArray()){
+            c_phone(digits,idx+1,temp+c,mp,ans);
         }
     }
+    
     public List<String> letterCombinations(String digits) {
-        List<String> ans=new ArrayList<>();
-        if(digits.length()==0) return ans;
         Map<Character,String> mp=new HashMap<>();
+        List<String> ans=new ArrayList<>();
         mp.put('2',"abc");
         mp.put('3',"def");
         mp.put('4',"ghi");
@@ -22,8 +23,8 @@ class Solution {
         mp.put('7',"pqrs");
         mp.put('8',"tuv");
         mp.put('9',"wxyz");
-        String str="";
-        helper(0,digits,mp,str,ans);
+        String s="";
+        c_phone(digits,0,s,mp,ans);
         return ans;
     }
 }
