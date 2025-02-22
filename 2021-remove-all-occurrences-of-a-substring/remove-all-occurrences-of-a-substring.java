@@ -3,7 +3,7 @@ class Solution {
         Stack<Character>temp=new Stack<>();{
             temp.addAll(st);
             for(int i=n-1;i>=0;i--){
-                if(temp.isEmpty()||temp.peek()!=part.charAt(i)){
+                if(temp.peek()!=part.charAt(i)){
                 return false;
             }
             temp.pop();
