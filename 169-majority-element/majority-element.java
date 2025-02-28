@@ -1,28 +1,26 @@
 class Solution {
     public int majorityElement(int[] nums) {
-   int c=0;
-   int el=0;
-   for(int i=0;i<nums.length;i++){
-    if(c==0){
-        el=nums[i];
-        c=1;
-    }
-    else if(nums[i]==el){
-        c++;
-    }
-    else{
-    c--;
-    }
-   }
-   int count =0;
-   for(int i=0;i<nums.length;i++){
-    if(nums[i]==el){
-        count++;
-    }
-   } 
-   if(count>nums.length/2){
-    return el;
-   }
-   return -1;
+        int n=nums.length;
+        int num = 0;
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (count == 0) {
+                num = nums[i];
+                count = 1;
+            }
+            else if (num == nums[i]) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+        int c=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=num) continue;
+            c++;
+        }
+        if(c>n/2) return num;
+        return -1;
+
     }
 }
