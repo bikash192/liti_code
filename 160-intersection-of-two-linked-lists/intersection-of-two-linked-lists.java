@@ -24,16 +24,15 @@ public class Solution {
         int l2 = length(headB);
         if(l1>l2){
             int d=l1-l2;
-            while(d>0){
+            while(d-->0){
                 headA=headA.next;
-                d--;
+                
             }
         }
         else{
             int d=l2-l1;
-            while(d>0){
+            while(d-->0){
                 headB=headB.next;
-                d--;
             }
         }
         ListNode s1=headA;
