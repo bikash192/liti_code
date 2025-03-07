@@ -7,22 +7,18 @@ class Solution {
             if(ch=='('||ch=='['||ch=='{'){
                 st.push(ch);
             }
-            else{
+            else {
                 if(st.isEmpty()) return false;
                 else{
                     char top=st.peek();
-                    if(ch==')'&&top=='('||ch==']'&&top=='['||ch=='}'&&top=='{'){
+                    if(ch==')'&& top=='('||ch==']'&&top=='['||ch=='}'&&top=='{'){
                         st.pop();
                     }
-                    else{
-                        return false;
-                    }
-
+                    else return false;
                 }
             }
-
         }
         if(st.isEmpty()) return true;
-         return false;
+        else return false;
     }
 }
