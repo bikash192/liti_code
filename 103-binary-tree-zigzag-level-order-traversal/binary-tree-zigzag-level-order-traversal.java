@@ -15,7 +15,7 @@
  */
 class Solution {
     public int height(TreeNode root){
-        if(root==null) return 0;
+        if(root==null||root.left==null&&root.right==null) return 0;
         return 1+Math.max(height(root.left),height(root.right));
     }
     public void nthlevel1(TreeNode root,int n,List<Integer> cur){
@@ -39,7 +39,7 @@ class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> ans=new ArrayList<>();
         if(root==null) return ans;
-        int level=height(root);
+        int level=height(root)+1;
         for(int i=1;i<=level;i++){
             List<Integer> cur=new ArrayList<>();
             if(i%2!=0){
