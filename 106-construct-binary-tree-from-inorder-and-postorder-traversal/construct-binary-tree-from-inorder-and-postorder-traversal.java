@@ -15,7 +15,7 @@
  */
 class Solution {
     public TreeNode helper(int[]in,int il,int ih,int[]pos,int pol,int poh){
-       if (il > ih || pol > poh) return null;
+       if ( pol > poh) return null;
         TreeNode root=new TreeNode(pos[poh]);
         int i=il;
         while(in[i]!=pos[poh]){
