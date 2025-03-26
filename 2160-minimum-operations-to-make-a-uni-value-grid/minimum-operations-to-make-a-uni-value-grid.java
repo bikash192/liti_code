@@ -20,6 +20,7 @@ class Solution {
                 res+=Math.abs(med-arr[i])/x;
             }
         }
+
         return res;
     }
 }
