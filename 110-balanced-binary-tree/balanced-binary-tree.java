@@ -14,15 +14,16 @@
  * }
  */
 class Solution {
-    public int depth(TreeNode root){
+    public int height(TreeNode root){
         if(root==null) return 0;
-        int l=depth(root.left);
-        int r=depth(root.right);
-        if(Math.abs(l-r)>1||l==-1||r==-1) return -1;
-        return 1+Math.max(l,r);
+        return 1+Math.max(height(root.left),height(root.right));
     }
     public boolean isBalanced(TreeNode root) {
-        if(depth(root)==-1) return false;
-        return true;
+        if(root==null) return true;
+        boolean l=isBalanced(root.left);
+        boolean r=isBalanced(root.right);
+        int lh=height(root.left);
+        int rh=height(root.right);
+        return l&&r&&Math.abs(lh-rh)<=1;
     }
 }
