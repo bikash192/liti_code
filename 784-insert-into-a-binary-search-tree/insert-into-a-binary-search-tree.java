@@ -20,14 +20,14 @@ class Solution {
             TreeNode temp=new TreeNode(val);
             root.left=temp;
         }
-        if(root.val<val&&root.right==null){
+        else if(root.val<val&&root.right==null){
             TreeNode temp=new TreeNode(val);
             root.right=temp;
         }
-        if(root.val>val){
+        else if(root.val>val){
             insertIntoBST(root.left,val);
         }
-        if(root.val<val){
+        else if(root.val<val){
             insertIntoBST(root.right,val);
         }
         return root;
