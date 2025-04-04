@@ -1,23 +1,20 @@
 class Solution {
-    public void c_sum(int[]a,int id,int t,List<Integer>cur,List<List<Integer>> ans){
-        int n=a.length;
-        if(id==n){
-            if(t==0){
-                ans.add(new ArrayList<>(cur));
-            }
+    public void sum(int[]arr,int tar,int i,int s,List<Integer>cur,List<List<Integer>>ans){
+        if(i==arr.length&&s==tar){
+            ans.add(new ArrayList<>(cur));
             return ;
         }
-        if(a[id]<=t){
-            cur.add(a[id]);
-            c_sum(a,id,t-a[id],cur,ans);
-            cur.remove(cur.size()-1);
-        }
-        c_sum(a,id+1,t,cur,ans);
+        if(i==arr.length&&s!=tar) return ;
+        if(s>tar) return ;
+        sum(arr,tar,i+1,s,cur,ans);
+        cur.add(arr[i]);
+        sum(arr,tar,i,s+arr[i],cur,ans);
+        cur.remove(cur.size()-1);
     }
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> ans=new ArrayList<>();
+        List<List<Integer>>ans=new ArrayList<>();
         List<Integer> cur=new ArrayList<>();
-        c_sum(candidates,0,target,cur,ans);
+        sum(candidates,target,0,0,cur,ans);
         return ans;
     }
 }
