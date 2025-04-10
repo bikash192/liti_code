@@ -1,56 +1,41 @@
 class Solution {
-    public void nqueen(char[][]board,int row,List<List<String>> ans){
-        List<String> l=new ArrayList<>();
-        int n=board.length;
+    public void nqueen(char[][]board,int row,List<List<String>> ans,int n){
+        List<String> st=new ArrayList<>();
         if(row==n){
+
             for(int i=0;i<n;i++){
-                String str="";
+                String s="";
                 for(int j=0;j<n;j++){
-                    str+=board[i][j];
+                    s+=board[i][j];
                 }
-                l.add(str);
+                st.add(s);
             }
-            ans.add(l);
+            ans.add(st);
             return ;
         }
-        for(int j=0;j<n;j++){
-            if(isSafe(board,row,j)){
+        for(int j=0;j<board.length;j++){
+            if(isvalid(board,row,j,n)){
                 board[row][j]='Q';
-                nqueen(board,row+1,ans);
-                board[row][j]='.';
+            nqueen(board,row+1,ans,n);
+            board[row][j]='.';
             }
         }
     }
-    public boolean isSafe(char[][]board,int row,int col){
-        int n=board.length;
-        for(int j=0;j<n;j++){
-            if(board[row][j]=='Q') return false;
-        }
+    public boolean isvalid(char[][]board,int row,int col,int n){
         for(int i=0;i<n;i++){
-            if(board[i][col]=='Q') return false;
+            if(board[i][col]=='Q') return false; 
+    }
+    
+        int i=row-1,j=col-1;
+         while(i>=0&&j>=0){
+            if(board[i][j]=='Q') return false;
+            i--;
+            j--;
         }
-        int i=row,j=col;
+        i=row-1;j=col+1;
         while(i>=0&&j<n){
             if(board[i][j]=='Q') return false;
             i--;
-            j++;
-        }
-        i=row;j=col;
-        while(i>=0&&j>=0){
-            if(board[i][j]=='Q') return false;
-            i--;
-            j--;
-        }
-        i=row;j=col;
-        while(i<n&&j>=0){
-            if(board[i][j]=='Q') return false;
-            i++;
-            j--;
-        }
-        i=row;j=col;
-        while(i<n&&j<n){
-            if(board[i][j]=='Q') return false;
-            i++;
             j++;
         }
         return true;
@@ -58,13 +43,13 @@ class Solution {
 
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> ans=new ArrayList<>();
-        char[][]board=new char[n][n];
+        char board[][]=new char[n][n];
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
                 board[i][j]='.';
             }
         }
-        nqueen(board,0,ans);
+        nqueen(board,0,ans,n);
         return ans;
     }
 }
