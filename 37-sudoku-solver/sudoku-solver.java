@@ -5,7 +5,6 @@ class Solution {
             col = 0;
         }
         if (col == 0 && row == 9) {
-            // Manually copy board to ans
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 9; j++) {
                     ans[i][j] = board[i][j];
@@ -20,7 +19,7 @@ class Solution {
                 if (isValid(board, row, col, ch)) {
                     board[row][col] = ch;
                     solve(row, col + 1, board, ans);
-                    board[row][col] = '.'; // backtrack
+                    board[row][col] = '.'; 
                 }
             }
         }
@@ -47,7 +46,6 @@ class Solution {
         char[][] ans = new char[9][9];
         solve(0, 0, board, ans);
 
-        // Copy ans back into board (so changes reflect in the original board)
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 board[i][j] = ans[i][j];
