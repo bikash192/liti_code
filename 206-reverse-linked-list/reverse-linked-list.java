@@ -9,13 +9,12 @@
  * }
  */
 class Solution {
-
     public ListNode reverseList(ListNode head) {
         if(head==null) return null;
         if(head.next==null) return head;
         ListNode rev_head=reverseList(head.next);
-        ListNode second=head.next;
-        second.next=head;
+        ListNode sec=head.next;
+        sec.next=head;
         head.next=null;
         return rev_head;
     }
